@@ -4,7 +4,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
-import { getProject, updateProject } from '../../../services/project'; // Service to get and update a project
+import { getProject, updateProject } from '@/services/project'; // Service to get and update a project
 
 export default function EditProjectPage() {
   const [project, setProject] = useState(null);
