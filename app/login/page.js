@@ -4,6 +4,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { setCookie, deleteCookie } from "cookies-next";
+import NavBar from "@/components/NavBar";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -91,6 +92,7 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
+      <NavBar></NavBar>
       <motion.div
         initial="hidden"
         animate="visible"
