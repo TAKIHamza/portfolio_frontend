@@ -15,6 +15,7 @@ export default function ProjectsSection() {
       try {
         const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/projects/`);
         setProjects(response.data);
+        
         setLoading(false);
       } catch (err) {
         setError("Failed to fetch projects");
@@ -90,10 +91,10 @@ export default function ProjectsSection() {
               <div className="flex flex-row justify-center aspect-w-16 aspect-h-12">
                 <Image
                   alt={project.title}
-                  className="w-32 h-40 transition-transform group-hover:scale-105"
+                  className="w-full h-44 p-1 object-cover transition-transform group-hover:scale-105"
                   height="225"
-                  src={project.image || '/next.svg'}
-                  width="400"
+                  src={project.thumbnail}
+                  width="500"
                 />
               </div>
               <Link href={`/project/${project.id}`}>
