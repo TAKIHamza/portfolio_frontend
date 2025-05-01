@@ -12,10 +12,16 @@ export default function NavBar() {
         <div className="container mx-auto  w-full  pt-2 bg-white-100   ">
             <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
                 <div>
-                    <div className="flex items-center justify-between py-3 md:py-2 md:block">
+                    <div className="flex items-center justify-between py-1 md:py-2 md:block">
                    
-                    {/* <Image src="/logo1.png" alt="logo" className="w-25 h-11" width={100}height={60}></Image> */}
-                      <h1 className="text-3xl font-semibold font-mono text-gray-600">TAKI</h1>
+                    
+                    <h1 className="text-2xl md:text-3xl font-bold font-mono 
+               bg-gradient-to-r from-cyan-800 via-sky-700 to-cyan-600
+               bg-clip-text text-transparent
+               hover:from-pink-600 hover:to-purple-600 
+               transition-all duration-300">
+  TAKI
+</h1>
                         <div className="md:hidden">
                             <button
                                 className="p-2  text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"

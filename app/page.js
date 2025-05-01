@@ -9,7 +9,7 @@ import ProjectsSection from "@/components/ProjectsSection";
 
 export default function Home() {
   return (
-    <div className="   bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]  font-[family-name:var(--font-geist-sans)]">
+    <div className=" overflow-y-auto  bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]  font-[family-name:var(--font-geist-sans)]">
      
      <NavBar></NavBar>
      <HeroSection/>

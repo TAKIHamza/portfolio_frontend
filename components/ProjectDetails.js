@@ -7,7 +7,6 @@ import {
   FiChevronLeft, 
   FiChevronRight, 
   FiMaximize, 
-  FiMinimize, 
   FiGithub, 
   FiGlobe, 
   FiStar,
@@ -123,21 +122,23 @@ export default function ProjectDetails({ project = mockProject }) {
     >
       {/* Back button */}
       <motion.div 
-        variants={itemVariants}
-        className="fixed top-6 left-6 z-20"
-      >
-        <Link 
-          href="/#projects" 
-          className="flex items-center group bg-white/90 backdrop-blur-sm px-4 py-3 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-200"
-        >
-          <FiChevronLeft className="w-5 h-5 mr-2 text-gray-700 group-hover:text-teal-600 transition-colors" />
-          <span className="text-gray-700 font-medium group-hover:text-teal-600 transition-colors">
-            All Projects
-          </span>
-        </Link>
-      </motion.div>
+  variants={itemVariants}
+  className="fixed top-4 left-4 z-50 sm:top-6 sm:left-6"
+>
+  <Link 
+    href="/#projects" 
+    className="flex items-center group bg-white/90 backdrop-blur-sm px-3 py-2 sm:px-4 sm:py-3 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-200"
+  >
+    <FiChevronLeft className="w-5 h-5 mr-2 text-gray-700 group-hover:text-teal-600 transition-colors" />
+    <span className="text-sm sm:text-base lg:text-lg text-gray-700 font-medium group-hover:text-teal-600 transition-colors">
+      {/* Show "Back" on mobile and "All Projects" on larger screens */}
+      <span className="block sm:hidden"></span>
+      <span className="hidden sm:block lg:hidden">All Projects</span>
+    </span>
+  </Link>
+</motion.div>
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ">
         {/* Project header */}
         <motion.div 
           variants={itemVariants}

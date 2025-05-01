@@ -99,36 +99,43 @@ export default function HeroSection() {
             }}
             className="flex flex-wrap justify-center gap-4"
           >
-            {['View Projects', 'Contact Me'].map((text, i) => (
-              <motion.a
-                key={text}
-                variants={{
-                  hidden: { y: 30, opacity: 0 },
-                  visible: { 
-                    y: 0, 
-                    opacity: 1,
-                    transition: { 
-                      type: "spring",
-                      stiffness: 100,
-                      damping: 12
-                    }
-                  }
-                }}
-                whileHover={{ 
-                  y: -3,
-                  transition: { type: "spring", bounce: 0.5 }
-                }}
-                whileTap={{ scale: 0.95 }}
-                href={`#${text.includes('Projects') ? 'projects' : 'contact'}`}
-                className={`rounded-lg px-6 py-3 font-medium ${
-                  i === 0 
-                    ? 'bg-cyan-700 text-white hover:bg-cyan-800' 
-                    : 'border border-slate-200 bg-white text-slate-900 hover:bg-slate-50'
-                } transition-all`}
-              >
-                {text}
-              </motion.a>
-            ))}
+            
+            {[
+  { text: "View Projects", href: "#projects" },
+  { text: "View My CV", href: "/Hamza-CV.pdf", newTab: true },
+].map(({ text, href, newTab }, i) => (
+  <motion.a
+    key={text}
+    variants={{
+      hidden: { y: 30, opacity: 0 },
+      visible: { 
+        y: 0, 
+        opacity: 1,
+        transition: { 
+          type: "spring",
+          stiffness: 100,
+          damping: 12
+        }
+      }
+    }}
+    whileHover={{ 
+      y: -3,
+      transition: { type: "spring", bounce: 0.5 }
+    }}
+    whileTap={{ scale: 0.95 }}
+    href={href}
+    target={newTab ? "_blank" : "_self"}
+    rel={newTab ? "noopener noreferrer" : undefined}
+    className={`rounded-lg px-6 py-3 font-medium ${
+      i === 0 
+        ? 'bg-cyan-700 text-white hover:bg-cyan-800' 
+        : 'border border-slate-200 bg-white text-slate-900 hover:bg-slate-50'
+    } transition-all`}
+  >
+    {text}
+  </motion.a>
+))}
+
           </motion.div>
         </div>
       </div>

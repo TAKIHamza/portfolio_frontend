@@ -40,25 +40,13 @@ const ContactButton = ({ currentUser = null }) => {
     setSubmitStatus({ success: null, message: '' });
 
     try {
-      // Call your API function
       await submitContactMessage(formData, currentUser?.id);
-      
       setSubmitStatus({
         success: true,
         message: 'Message sent successfully! I\'ll get back to you soon.'
       });
-      
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        message: ''
-      });
-      
-      // Auto-close after success (optional)
-      setTimeout(() => {
-        setIsOpen(false);
-      }, 2000);
+      setFormData({ name: '', email: '', message: '' });
+      setTimeout(() => setIsOpen(false), 2000);
     } catch (error) {
       setSubmitStatus({
         success: false,
@@ -70,7 +58,7 @@ const ContactButton = ({ currentUser = null }) => {
   };
 
   return (
-    <div className="fixed bottom-8 right-8 z-50">
+    <div className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-50">
       {/* Main Floating Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
@@ -78,60 +66,63 @@ const ContactButton = ({ currentUser = null }) => {
         onMouseLeave={() => setIsHovering(false)}
         className={`
           flex items-center justify-center
-          w-14 h-14 md:w-16 md:h-16
+          w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16
           rounded-full
           bg-gradient-to-br from-cyan-600 to-sky-700
           text-white
           shadow-lg hover:shadow-xl
           transition-all duration-300 ease-in-out
-          ${isOpen ? '!w-40 !rounded-2xl' : ''}
+          ${isOpen ? '!w-32 sm:!w-40 !rounded-2xl' : ''}
           hover:scale-110
-          focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-opacity-50
+          focus:outline-none focus:ring-2 focus:ring-cyan-500
           overflow-hidden
           ${!isOpen && !isHovering ? 'animate-float' : ''}
           ${isHovering ? 'animate-vibrate' : ''}
         `}
         aria-label="Contact form"
       >
-        <span className={`text-xl ${isOpen ? 'mr-2' : 'absolute'}`}>✉️</span>
+        <span className={`text-xl ${isOpen ? 'mr-1 sm:mr-2' : 'absolute'}`}>✉️</span>
         <span className={`
-          whitespace-nowrap
+          whitespace-nowrap text-sm sm:text-base
           transition-all duration-300
           ${isOpen ? 'opacity-100 w-auto' : 'opacity-0 w-0'}
         `}>
-          Contact Me
+          Contact
         </span>
       </button>
 
       {/* Contact Form */}
       {isVisible && (
         <div className={`
-          absolute bottom-20 right-0
-          w-96 sm:w-96 md:w-[30rem]
-          bg-white
-          border-2
-          border-x-cyan-100
+          absolute bottom-14 right-0 sm:bottom-20
+          w-72 sm:w-96 md:w-[28rem]
+          bg-white dark:bg-gray-800
+          border border-gray-200 dark:border-gray-700
           rounded-xl
           shadow-2xl
-          p-6
+          p-4 sm:p-6
           transition-all duration-300 ease-in-out
           ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5 pointer-events-none'}
         `}>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <h3 className="text-lg font-semibold text-slate-800 text-center">Get in Touch</h3>
+          <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
+            <h3 className="text-lg font-semibold text-slate-800 dark:text-white text-center">
+              Get in Touch
+            </h3>
             
             {submitStatus.message && (
-              <div className={`p-3 rounded-lg text-sm ${
+              <div className={`p-2 sm:p-3 rounded-lg text-sm ${
                 submitStatus.success 
-                  ? 'bg-green-100 text-green-800' 
-                  : 'bg-red-100 text-red-800'
+                  ? 'bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200' 
+                  : 'bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200'
               }`}>
                 {submitStatus.message}
               </div>
             )}
             
             <div className="space-y-1">
-              <label htmlFor="name" className="block text-sm font-medium text-slate-600">Name</label>
+              <label htmlFor="name" className="block text-sm font-medium text-slate-600 dark:text-gray-300">
+                Name
+              </label>
               <input
                 type="text"
                 id="name"
@@ -139,12 +130,14 @@ const ContactButton = ({ currentUser = null }) => {
                 onChange={handleChange}
                 placeholder="Your name"
                 required
-                className="w-full px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
+                className="w-full px-3 py-2 text-sm sm:text-base border border-slate-200 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
               />
             </div>
             
             <div className="space-y-1">
-              <label htmlFor="email" className="block text-sm font-medium text-slate-600">Email</label>
+              <label htmlFor="email" className="block text-sm font-medium text-slate-600 dark:text-gray-300">
+                Email
+              </label>
               <input
                 type="email"
                 id="email"
@@ -152,33 +145,50 @@ const ContactButton = ({ currentUser = null }) => {
                 onChange={handleChange}
                 placeholder="Your email"
                 required
-                className="w-full px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
+                className="w-full px-3 py-2 text-sm sm:text-base border border-slate-200 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
               />
             </div>
             
             <div className="space-y-1">
-              <label htmlFor="message" className="block text-sm font-medium text-slate-600">Message</label>
+              <label htmlFor="message" className="block text-sm font-medium text-slate-600 dark:text-gray-300">
+                Message
+              </label>
               <textarea
                 id="message"
                 value={formData.message}
                 onChange={handleChange}
                 placeholder="Your message"
-                rows="4"
+                rows="3"
                 required
-                className="w-full px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
+                className="w-full px-3 py-2 text-sm sm:text-base border border-slate-200 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
               ></textarea>
             </div>
             
             <button
               type="submit"
               disabled={isSubmitting}
-              className={`w-full py-2 px-4 bg-gradient-to-r from-cyan-600 to-sky-700 text-white rounded-lg transition-all duration-300 shadow-md hover:shadow-lg ${
-                isSubmitting 
+              className={`
+                w-full py-2 px-4 
+                bg-gradient-to-r from-cyan-600 to-sky-700 
+                text-white rounded-lg 
+                transition-all duration-300 
+                shadow-md hover:shadow-lg
+                text-sm sm:text-base
+                ${isSubmitting 
                   ? 'opacity-70 cursor-not-allowed' 
                   : 'hover:from-cyan-700 hover:to-sky-800 hover:animate-pulse'
-              }`}
+                }`
+              }
             >
-              {isSubmitting ? 'Sending...' : 'Send Message'}
+              {isSubmitting ? (
+                <span className="flex items-center justify-center">
+                  <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Sending...
+                </span>
+              ) : 'Send Message'}
             </button>
           </form>
         </div>
