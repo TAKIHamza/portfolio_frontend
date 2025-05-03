@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Frontend Portfolio - Next.js & Tailwind CSS
 
-## Getting Started
+Une application frontend moderne construite avec Next.js, Tailwind CSS et Framer Motion pour animer un portfolio de développeur. Connectée à une API Django sécurisée via JWT, elle permet la gestion dynamique des projets, compétences, profil, et des messages de contact.
 
-First, run the development server:
+## 🎯 Objectif
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Offrir une interface utilisateur fluide et professionnelle pour présenter mes projets, mes compétences et permettre aux visiteurs de me contacter facilement. Une interface admin sécurisée permet la gestion de tout le contenu.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Fonctionnalités
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- Affichage dynamique des projets, compétences et profil
+- Formulaire de contact avec envoi direct à l’API
+- Authentification JWT pour l’administration
+- Interface admin (CRUD) pour :
+  - Projets
+  - Compétences
+  - Profil
+  - Messages de contact
+- Animations fluides avec Framer Motion
+- Responsive Design (mobile-friendly)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ Technologies utilisées
 
-## Learn More
+- [Next.js](https://nextjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Framer Motion](https://www.framer.com/motion/)
+- [Axios](https://axios-http.com/) (pour communiquer avec le backend Django)
+- [React Hook Form](https://react-hook-form.com/)
+- [JWT Auth](https://jwt.io/)
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🔐 Authentification
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Connexion via JWT avec le backend
+- Stockage du token dans `localStorage`
+- Middleware de protection des pages admin
 
-## Deploy on Vercel
+## 🧪 Lancer le projet localement
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. **Cloner le repo :**
+   ```bash
+   git clone https://github.com/<votre-username>/portfolio-frontend.git
+   cd portfolio-frontend
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
